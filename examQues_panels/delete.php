@@ -15,8 +15,9 @@ require("db_connection.php");
 
 
 /* For SubCategory */
-if(isset($_GET['id'])){
+if(isset($_GET['sub_id'])){
     $sub_id = $_GET['sub_id'];
+    // die();
 
     $sql_query_delete = "DELETE FROM `sub_category` WHERE sub_id = '$sub_id';";
     $result_delete = mysqli_query($con, $sql_query_delete);
