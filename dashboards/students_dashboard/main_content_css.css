@@ -1,0 +1,207 @@
+/* ========> Begin Alert Css <======== */
+.alert {
+    background-color: #5573ba;
+    color: white;
+    padding: 5px 10px;
+}
+
+/* ========> End Alert Css <======== */
+
+
+/* =======> Begin Main Content Css <======= */
+.main_content {
+    background-color: white;
+    transition: all 0.3s ease;
+    width: 95%;
+}
+
+.sidebar.active .main_content {
+    transition: all 0.4s ease;
+    width: 82%;
+}
+
+.main_content .adding_forms {
+    height: 100vh;
+    position: relative;
+}
+
+.main_content .adding_forms .card {
+    width: 27rem;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 5px 30px;
+    border-radius: 20px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.main_content .card .card-body .card-title {
+    text-align: center;
+    padding: 5px 10px;
+    margin-bottom: 7px;
+    color: #3e517e;
+    font-size: 20px;
+}
+
+.main_content .card .card-body .form_content {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.main_content .card .card-body .inp_div {
+    padding: 1%;
+}
+
+.main_content .card .card-body .inp_div label {
+    font-size: 14px;
+    padding: 6px;
+    padding-bottom: 20px;
+    margin-top: 5px;
+    color: #606e8e;
+}
+
+.main_content .card .card-body .inp_div input,
+textarea,
+select {
+    width: 100%;
+    padding: 2% 5%;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    background-color: #f5f8ff;
+    color: rgb(62, 62, 62);
+    font-size: 14px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    box-shadow: inset #b9bbbe 0.5px 0.5px 4px 0px;
+}
+
+.main_content .card .card-body .inp_div input:hover,
+textarea:hover,
+select:hover {
+    box-shadow: inset #344f8d 0.5px 0.5px 5px 0.5px;
+}
+
+.main_content .card .card-body .forgot_password {
+    text-align: right;
+    margin-top: 10px;
+}
+
+.main_content .card .card-body .forgot_password a:hover {
+    text-decoration: underline;
+    color: #2a3d68;
+}
+
+.main_content .card .card-body .inp_div .btn {
+    width: 100%;
+    padding: 4px;
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border: none;
+    background: #809bdc;
+    background: -webkit-linear-gradient(to right, #294378, #617dbe);
+    background: linear-gradient(to right, #1f3b73, #7390db);
+    color: white;
+    font-size: 17px;
+    transition: all 0.3s ease;
+}
+
+.main_content .card .card-body .inp_div .btn:hover {
+    background: #809bdc;
+    background: -webkit-linear-gradient(to right, #294378, #617dbe);
+    background: linear-gradient(to right, #8ba9f4, #1f3b73);
+    box-shadow: inset 3px 0px 0.5px 1px;
+}
+
+/* ========> End Main Content Css <======== */
+
+
+/* -------> Begin Table css <-------- */
+.styled-table {
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    color: #5573ba;
+}
+
+.styled-table thead tr {
+    border-radius: 10px;
+    background-color: #5573ba;
+    color: #ffffff;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 8px 5px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #5573ba;
+}
+
+.styled-table tbody td:hover {
+    color: #173267;
+}
+
+.styled-table tbody .edit_btn {
+    color: green;
+}
+
+.styled-table tbody .delete_btn {
+    color: red;
+}
+
+.styled-table tbody .edit_btn:hover,
+.delete_btn:hover {
+    text-decoration: underline;
+}
+
+/* --------> End Table css <--------- */
+
+
+
+/* ---------> Pagination Css Start <---------*/
+.pagination {
+    margin-top: 20px;
+}
+
+.pagination ul {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination ul li {
+    list-style: none;
+}
+
+
+.pagination ul li a {
+    text-decoration: none;
+    height: 100%;
+    width: 100%;
+    border: 1px solid #5573ba;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.pagination ul a:hover {
+    color: white;
+    background-color: #5573ba;
+}
+
+.active {
+    color: white;
+    background-color: #5573ba;
+}
+
+/* ----------> Pagination Css End <----------*/
