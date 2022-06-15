@@ -119,7 +119,7 @@ include "sidebar.php";
                                             <th>User Id</th>
                                             <th>User Type</th>
                                             <th>Student Id</th>
-                                            <th>Student Mame</th>
+                                            <th>Student Name</th>
                                             <th>Father Name</th>
                                             <th>Gender</th>
                                             <th>Mobile</th>
@@ -144,7 +144,7 @@ include "sidebar.php";
 
                                         $offset_value = ($page - 1) * $record_per_page;
 
-                                        $sql_fetch = "SELECT * FROM `students` LIMIT {$offset_value}, {$record_per_page}";
+                                        $sql_fetch = "SELECT * FROM `students` ORDER BY `student_name` ASC LIMIT {$offset_value}, {$record_per_page}";
                                         $sql_fetch_run = mysqli_query($con, $sql_fetch);
                                         if (mysqli_num_rows($sql_fetch_run) > 0) {
                                             while ($row = mysqli_fetch_assoc($sql_fetch_run)) {

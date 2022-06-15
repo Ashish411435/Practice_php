@@ -22,6 +22,10 @@ include "sidebar.php";
             padding: 20px 40px;
         }
 
+        .main_content .adding_forms .card {
+            width: 32rem;
+        }
+
         .addcat_btn,
         .catlist_btn {
             padding: 10px 20px;
@@ -80,22 +84,16 @@ include "sidebar.php";
                     ?>
                         <form action="handle.php" method="post" enctype="multipart/form-data">
                             <div class="form_content" style="display: flex; justify-content: space-evenly;">
-                                <div>
-                                    <div class="userid inp_div">
-                                        <!-- <label for="userid">* User id : </label> -->
-                                        <div>
-                                            <input type="hidden" name="userid" id="userid" value="<?php if (isset($_SESSION['userid'])) {
-                                                                                                        echo $_SESSION['userid'];
-                                                                                                    } ?>">
-                                        </div>
-                                    </div>
-                                    <div class="studentid inp_div">
+                                <div style="width: 16rem;">
+                                    <!-- <label for="userid">* User id : </label> -->
+                                    <input type="hidden" name="userid" id="userid" value="<?php if (isset($_SESSION['userid'])) {
+                                                                                                echo $_SESSION['userid'];
+                                                                                            } ?>">
                                         <div>
                                             <?php if (isset($_GET['student_id'])) {
                                                 $student_id =  $_GET['student_id'];
                                             } ?>
                                         </div>
-                                    </div>
                                     <?php
                                     $sql_data_fetch = "SELECT * FROM `students` WHERE `id` = $student_id";
                                     $sql_data_fetch_run = mysqli_query($con, $sql_data_fetch);
@@ -111,11 +109,16 @@ include "sidebar.php";
                                             $duration = $row['duration'];
                                             $duration_year = $row['duration_year'];
                                             $duration_month = $row['duration_month'];
+                                            $duration_day = $row['duration_days'];
                                         }
                                     } else {
                                         $_SESSION['status'] = "No Record Found";
                                     }
                                     ?>
+                                    <!-- <label for="student_id">* Student id : </label> -->
+                                    <div>
+                                        <input type="hidden" name="student_id" id="student_id" value="<?= $student_id ?>">
+                                    </div>
                                     <div class="student_name inp_div">
                                         <label for="student_name">* Student Name : </label>
                                         <div>
@@ -152,42 +155,72 @@ include "sidebar.php";
                                         </div>
                                     </div>
                                 </div>
-                                <div>
+                                <div style="width: 16rem;">
                                     <div class="address inp_div">
                                         <label for="address">* Address : </label>
                                         <div>
                                             <textarea name="address" id="address" cols="25" rows="1" style="border: none;"><?= $address ?></textarea>
                                         </div>
                                     </div>
+
                                     <div class="duration inp_div">
                                         <label for="duration">Duration : </label>
                                         <div>
                                             <!-- <input type="text" name="duration" id="duration" placeholder="In Months"> -->
                                             <select name="year" id="year">
+                                                <option disabled selected>-Select year-</option>
                                                 <option selected><?= $duration_year ?></option>
-                                                <option value="1 year">1</option>
-                                                <option value="2 year">2</option>
-                                                <option value="3 year">3</option>
-                                                <option value="4 year">4</option>
-                                                <option value="5 year">5</option>
+                                                <?php
+                                                $sql = "SELECT * FROM `year` ";
+                                                $sql_run = mysqli_query($con, $sql);
+                                                if (mysqli_num_rows($sql_run) > 0) {
+                                                    while ($row = mysqli_fetch_assoc($sql_run)) {
+                                                        $year = $row['year'];
+                                                ?>
+                                                        <option value="<?= $year . ' year' ?>"><?= $year ?></option>
+                                                <?php
+                                                    }
+                                                }
+
+                                                ?>
                                             </select>
+
                                             <select name="month" id="month">
+                                                <option disabled selected>-Select Month-</option>
                                                 <option selected><?= $duration_month ?></option>
-                                                <option value="1 Months">1</option>
-                                                <option value="2 Months">2</option>
-                                                <option value="3 Months">3</option>
-                                                <option value="4 Months">4</option>
-                                                <option value="5 Months">5</option>
-                                                <option value="6 Months">6</option>
-                                                <option value="7 Months">7</option>
-                                                <option value="8 Months">8</option>
-                                                <option value="9 Months">9</option>
-                                                <option value="10 Months">10</option>
-                                                <option value="11 Months">11</option>
-                                                <option value="12 Months">12</option>
+                                                <?php
+                                                $sql = "SELECT * FROM `months` ";
+                                                $sql_run = mysqli_query($con, $sql);
+                                                if (mysqli_num_rows($sql_run) > 0) {
+                                                    while ($row = mysqli_fetch_assoc($sql_run)) {
+                                                        $months = $row['months'];
+                                                ?>
+                                                        <option value="<?= $months . ' Months' ?>"><?= $months ?></option>
+                                                <?php
+                                                    }
+                                                }
+                                                ?>
+                                            </select>
+                                            <select name="day" id="day">
+                                                <option disabled selected>-Select days-</option>
+                                                <option selected><?= $duration_day ?></option>
+                                                <?php
+                                                $sql = "SELECT * FROM `days`";
+                                                $sql_run = mysqli_query($con, $sql);
+                                                if (mysqli_num_rows($sql_run) > 0) {
+                                                    while ($row = mysqli_fetch_assoc($sql_run)) {
+                                                        $days = $row['days'];
+                                                ?>
+                                                        <option value="<?= $days . ' days' ?>"><?= $days ?></option>
+                                                <?php
+                                                    }
+                                                }
+                                                ?>
                                             </select>
                                         </div>
                                     </div>
+
+
                                     <div class="join_date inp_div">
                                         <label for="join_date">Join Date : </label>
                                         <div>

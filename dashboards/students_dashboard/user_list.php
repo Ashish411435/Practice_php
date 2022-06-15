@@ -133,7 +133,7 @@ include "sidebar.php";
 
                                 $offset_value = ($page - 1) * $record_per_page;
 
-                                $sql_fetch = "SELECT * FROM `register` LIMIT {$offset_value}, {$record_per_page}";
+                                $sql_fetch = "SELECT * FROM `register` ORDER BY `user_type` ASC LIMIT {$offset_value}, {$record_per_page}";
                                 $sql_fetch_run = mysqli_query($con, $sql_fetch);
                                 if (mysqli_num_rows($sql_fetch_run) > 0) {
                                     while ($row = mysqli_fetch_assoc($sql_fetch_run)) {
@@ -152,7 +152,7 @@ include "sidebar.php";
                                         <td>' . $mobile . '</td>
                                         <td>' . $user_type . '</td>
                                         <td>' . $status . '</td>
-                                        <td><a class="edit_btn" href="">Edit</a></td>
+                                        <td><a class="edit_btn" href="user_edit.php?user_id=' . $user_id . '&page=' . $page . '">Edit</a></td>
                                         <td><a class="delete_btn" href="delete.php?user_id=' . $user_id . '&page=' . $page . '">Delete</a></td>
                                     </tr>';
                                     }

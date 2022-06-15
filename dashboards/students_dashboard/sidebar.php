@@ -43,39 +43,39 @@
             }
             if (isset($_SESSION['email'])) {
             ?>
-            <li>
-                <a href="<?php echo $redirect_to_dashboard ?>">
-                    <i class="bx bxl-discord-alt"></i><span class="list_name">Dashboard</span>
-                    <span class="tooltip">Dashboard</span>
-                </a>
-            </li>
-            <?php
-            if ($usertype == "admin") { ?>
                 <li>
-                    <a href="create_user.php">
-                        <i class="bx bx-category-alt"></i><span class="list_name">Create User</span>
-                        <span class="tooltip">Create User</span>
+                    <a href="<?php echo $redirect_to_dashboard ?>">
+                        <i class="bx bxl-discord-alt"></i><span class="list_name">Dashboard</span>
+                        <span class="tooltip">Dashboard</span>
                     </a>
                 </li>
-            <?php } ?>
-            <li>
-                <a href="add_student.php">
-                    <i class="bx bxs-duplicate"></i><span class="list_name">Student</span>
-                    <span class="tooltip">Student</span>
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <i class="bx bxs-direction-left"></i><span class="list_name">Return</span>
-                    <span class="tooltip">Return</span>
-                </a>
-            </li>
-            <li>
-                <a href="#;">
-                    <i class="bx bx-log-out-circle"></i><span class="list_name">Logout</span>
-                    <span class="tooltip">Logout</span>
-                </a>
-            </li>
+                <?php
+                if ($usertype == "admin") { ?>
+                    <li>
+                        <a href="create_user.php">
+                            <i class="bx bxs-user-circle"></i><span class="list_name">User</span>
+                            <span class="tooltip">User</span>
+                        </a>
+                    </li>
+                <?php } ?>
+                <li>
+                    <a href="add_student.php">
+                        <i class="bx bx-user-plus"></i><span class="list_name">Student</span>
+                        <span class="tooltip">Student</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#;">
+                        <i class="bx bxl-angular"></i><span class="list_name">Attendence</span>
+                        <span class="tooltip">Attendence</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#;">
+                        <i class="bx bx-log-out-circle"></i><span class="list_name">Logout</span>
+                        <span class="tooltip">Logout</span>
+                    </a>
+                </li>
             <?php
             }
             ?>

@@ -158,7 +158,9 @@
                     <i class='bx bxs-user'></i>
                 </div>
                 <div>
-                    <h5 style="text-align:center;">User</h5>
+                    <h5 style="text-align:center;"><?php if (isset($_SESSION['usertype'])) {
+                                                        echo $_SESSION['usertype'];
+                                                    } ?> </h5>
                     <p><?php if (isset($_SESSION['username'])) {
                             echo $_SESSION['username'];
                         } ?>

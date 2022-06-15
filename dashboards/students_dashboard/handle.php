@@ -142,7 +142,8 @@ if (isset($_POST['add_student'])) {
     /* ====> Begin Duration Code <==== */
     $year = $_POST['year'];
     $month = $_POST['month'];
-    $duration = $year . " " . $month;
+    $day = $_POST['day'];
+    $duration = $year . " " . $month . " " . $day;
     /* ====> End Duration Code <==== */
 
     /* ====> Begin Duration Code <==== */
@@ -153,7 +154,7 @@ if (isset($_POST['add_student'])) {
     /* ====> Begin Duration Code <==== */
     // $end_date = $_POST['end_date'];
 
-    if ($student_name == "" || $father_name == "" || $mobile == "" || $email == "" || $year == "" && $month == "" || $gender == "" || $address == "" || $join_date == "" || $duration == "") {
+    if ($student_name == "" || $father_name == "" || $mobile == "" || $email == "" || $year == "" && $month == "" && $day || $gender == "" || $address == "" || $join_date == "" || $duration == "") {
         $_SESSION['status'] = "! Please fill required fields.";
         header("location: add_student.php");
     } else {
@@ -164,7 +165,7 @@ if (isset($_POST['add_student'])) {
             header("location: add_student.php");
             exit();
         } else {
-            $sql_insert = "INSERT INTO `students` (`student_name`, `user_id`, `user_type`, `father_name`, `gender`, `mobile`, `email`, `address`, `join_date`, `end_date`, `duration`) VALUES ('$student_name', '$userid','$usertype', '$father_name', '$gender', '$mobile', '$email', '$address', '$join_date', '$end_date', '$duration')";
+            $sql_insert = "INSERT INTO `students` (`student_name`, `user_id`, `user_type`, `father_name`, `gender`, `mobile`, `email`, `address`, `join_date`, `end_date`, `duration`, `duration_year`, `duration_month`, `duration_days` ) VALUES ('$student_name', '$userid','$usertype', '$father_name', '$gender', '$mobile', '$email', '$address', '$join_date', '$end_date', '$duration', '$year', '$month', '$day')";
             // die();
             $sql_insert_run = mysqli_query($con, $sql_insert);
             if ($sql_insert_run) {
@@ -184,8 +185,6 @@ if (isset($_POST['add_student'])) {
 /* ===============> Begin Update Students Form <=============== */
 if (isset($_POST['update_student'])) {
     $student_id = $_POST['student_id'];
-    echo $student_id;
-    // die();
     $student_name = $_POST['student_name'];
     $father_name = $_POST['father_name'];
     $mobile = $_POST['mobile'];
@@ -196,7 +195,8 @@ if (isset($_POST['update_student'])) {
     /* ====> Begin Duration Code <==== */
     $year = $_POST['year'];
     $month = $_POST['month'];
-    $duration = $year . " " . $month;
+    $day = $_POST['day'];
+    $duration = $year . " " . $month . " " . $day;
     /* ====> End Duration Code <==== */
 
     /* ====> Begin Duration Code <==== */
@@ -206,7 +206,7 @@ if (isset($_POST['update_student'])) {
     $end_date = date_format($jd, 'Y-m-d');
     /* ====> Begin Duration Code <==== */
 
-    $sql_update = "UPDATE `students` SET `student_name` = '$student_name', `father_name` = '$father_name', `gender` = '$gender' , `mobile` ='$mobile', `email` = '$email', `address` = '$address', `join_date` = '$join_date', `end_date` = '$end_date', `duration` = '$duration', `duration_year` = '$year', `duration_month` = '$month' WHERE `id` = $student_id";
+    $sql_update = "UPDATE `students` SET `student_name` = '$student_name', `father_name` = '$father_name', `gender` = '$gender' , `mobile` ='$mobile', `email` = '$email', `address` = '$address', `join_date` = '$join_date', `end_date` = '$end_date', `duration` = '$duration', `duration_year` = '$year', `duration_month` = '$month', `duration_days` = '$day' WHERE `id` = $student_id";
     // die();
     $sql_update_run = mysqli_query($con, $sql_update);
     if ($sql_update_run) {
@@ -214,7 +214,7 @@ if (isset($_POST['update_student'])) {
         header("location: students_list.php");
         exit();
     } else {
-        $_SESSION['status'] = "! Something Went wrong... Cannot Updated.";
+        $_SESSION['status'] = mysqli_connect_error();
         header("location: students_list.php");
         exit();
     }
